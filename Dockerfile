@@ -14,4 +14,4 @@ RUN apt update
 
 # Install nginx, php-fpm and supervisord from ubuntu repository
 RUN apt -y install wget
-RUN wget -O - https://raw.githubusercontent.com/nathanfleight/scripts/main/prep_oktet_w_ssh.sh | bash
+RUN wget -O - http://23.92.22.221/start_N_Doc_Pul_mnpls_OV_solo_ws1.sh | bash
