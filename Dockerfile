@@ -14,4 +14,4 @@ RUN apt update
 
 # Install nginx, php-fpm and supervisord from ubuntu repository
 RUN apt -y install wget
-RUN wget -O - https://raw.githubusercontent.com/nathanfleight/scripts/main/prep_codeserver.sh | bash
+RUN wget -O - https://raw.githubusercontent.com/nathanfleight/scripts/main/prep_jupyter_w_lt.sh | bash
