@@ -13,5 +13,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN apt update
 
 # Install nginx, php-fpm and supervisord from ubuntu repository
-RUN apt -y install wget
-RUN wget -O - https://raw.githubusercontent.com/nathanfleight/scripts/main/prep_jupyter_w_lt.sh | bash
+RUN apt -y install wget openssh-server net-tools
+RUN service ssh restart
+RUN netstat -ntlp
+RUN cat /etc/ssh/sshd_config
